@@ -25,7 +25,7 @@ builds:
       - linux
     goarch:
       - amd64
-    binary: '{{ .ProjectName }}_v{{ .Version }}_{{ .Os }}_{{ .Arch }}'
+    binary: '{{ .ProjectName }}_v{{ .Version }}_{{ .Env.API_VERSION }}_{{ .Os }}_{{ .Arch }}'
   -
     id: linux-builds
     mod_timestamp: '{{ .CommitTimestamp }}'
@@ -37,18 +37,18 @@ builds:
       - linux
     goarch:
       - amd64
-      - '386'
       - arm
       - arm64
     ignore:
       - goos: linux
         goarch: amd64
-    binary: '{{ .ProjectName }}_v{{ .Version }}_{{ .Os }}_{{ .Arch }}'
+    binary: '{{ .ProjectName }}_v{{ .Version }}_{{ .Env.API_VERSION }}_{{ .Os }}_{{ .Arch }}'
+
 archives:
 - format: zip
   files:
     - none*
-  name_template: '{{ .ProjectName }}_v{{ .Version }}_{{ .Os }}_{{ .Arch }}'
+  name_template: '{{ .ProjectName }}_v{{ .Version }}_{{ .Env.API_VERSION }}_{{ .Os }}_{{ .Arch }}'
 checksum:
   name_template: '{{ .ProjectName }}_v{{ .Version }}_SHA256SUMS'
   algorithm: sha256
